@@ -10,11 +10,11 @@
 
 Implementar uma shell simples de nome mac422shell
 
-* Item a protegepracaramba <caminho do arquivo>
-* Item b liberageral <caminho do arquivo>
-* Item c rodaveja <caminho do arquivo>
-* Item d rode <caminho do arquivo
+1. protegepracaramba \<caminho do arquivo\>
+2. Item b liberageral \<caminho do arquivo\>
+3. Item c rodaveja \<caminho do arquivo\>
+4. Item d rode \<caminho do arquivo\>
 
 ## Entrega
-* Item a A imagem .ova deve conter o executável da shell em /usr/local/bin
-* Item b O código em C em /usr/local/src
+1. Item a A imagem .ova deve conter o executável da shell em /usr/local/bin
+2. Item b O código em C em /usr/local/src
