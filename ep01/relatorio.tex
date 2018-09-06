@@ -1,0 +1,66 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{xspace}
+\usepackage{amsmath}
+\usepackage{nccmath}
+\usepackage{mathtools}
+\usepackage{bbm}
+\usepackage{multirow}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[margin=1.0in]{geometry}
+\usepackage[decimalsymbol=comma]{siunitx}
+\setlength{\parindent}{0pt}
+\usepackage{tikz}
+\usepackage{listings}
+\usetikzlibrary{arrows,shapes,automata,petri,positioning,calc}
+
+\title{MAC0422 - Sistemas Operacionais}
+\author{Matheus Conceição - ???????? \\ Vitor Barbosa Sério - 7627627}
+\date{\today}
+
+\newcommand\eqdef{\stackrel{\mathclap{\normalfont\mbox{def}}}{=}}
+\newcommand\eqdub{\stackrel{\mathclap{\normalfont\mbox{?}}}{=}}
+\newcommand\leqdub{\stackrel{\mathclap{\normalfont\mbox{?}}}{\leq}}
+\newcommand\geqdub{\stackrel{\mathclap{\normalfont\mbox{?}}}{\geq}}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newcommand\Oh[1]{\text{O}(#1)}
+\newcommand\Thetah[1]{\Theta(#1)}
+
+\newcommand{\benum}{\begin{enumerate}}
+\newcommand{\eenum}{\end{enumerate}}
+
+\begin{document}
+
+
+\makeatletter
+\begin{flushright}
+\@date
+\end{flushright}
+\begin{center}
+{\Large \@title \\}
+{\large \@author}
+\end{center}
+\makeatother
+
+Esse trabalho simula uma shell capaz de interpretar 5 comandos distindos: \texttt{protegepracaramba}, \texttt{liberageral}, \texttt{rodeveja}, \texttt{rode} e \texttt{quit}, que funcionam das seguintes formas:
+
+\begin{itemize}
+\item \texttt{protegepracaramba <arquivo>}: coloca proteção 000 em \texttt{arquivo}, utilizando as chamadas \texttt{fork}, que cria um processo filho, \texttt{execve}, para executar outro programa no lugar do processo filho, e \texttt{chmod}, que é a chamada executada por \texttt{execve} e que altera as permissões de \texttt{arquivo}.
+
+
+\item \texttt{liberageral <arquivo>}: coloca proteção 777 em \texttt{arquivo}, utilizando as chamadas \texttt{fork}, que cria um processo filho, \texttt{execve}, para executar outro programa no lugar do processo filho, e \texttt{chmod}, que é a chamada executada por \texttt{execve} e que altera as permissões de \texttt{arquivo}.
+
+
+\item \texttt{rodeveja <programa>}: executa \texttt{programa} e imprime o valor de retorno do mesmo ao final, utilizando as chamadas \texttt{fork}, que cria um processo filho, \texttt{execve}, para executar \texttt{programa} no lugar do processo filho, e \texttt{wait}, para que o processo pai espere o processo filho terminar.
+
+
+\item \texttt{rode <programa>}: executa \texttt{programa}, sem imprimir o valor de retorno e também monopoliza o teclado e o mouse, utilizando as chamadas \texttt{fork}, que cria um processo filho, e \texttt{execve}, para executar \texttt{programa} no lugar do processo filho.
+\item \texttt{quit}: encerra a shell.
+\end{itemize}
+
+\end{document}
