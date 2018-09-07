@@ -18,7 +18,7 @@
 \usetikzlibrary{arrows,shapes,automata,petri,positioning,calc}
 
 \title{MAC0422 - Sistemas Operacionais}
-\author{Matheus Conceição - ???????? \\ Vitor Barbosa Sério - 7627627}
+\author{Matheus Santos - 10297672 \\ Vitor Barbosa Sério - 7627627}
 \date{\today}
 
 \newcommand\eqdef{\stackrel{\mathclap{\normalfont\mbox{def}}}{=}}
@@ -56,10 +56,8 @@ Esse trabalho simula uma shell capaz de interpretar 5 comandos distindos: \textt
 \item \texttt{liberageral <arquivo>}: coloca proteção 777 em \texttt{arquivo}, utilizando as chamadas \texttt{fork}, que cria um processo filho, \texttt{execve}, para executar outro programa no lugar do processo filho, e \texttt{chmod}, que é a chamada executada por \texttt{execve} e que altera as permissões de \texttt{arquivo}.
 
 
-\item \texttt{rodeveja <programa>}: executa \texttt{programa} e imprime o valor de retorno do mesmo ao final, utilizando as chamadas \texttt{fork}, que cria um processo filho, \texttt{execve}, para executar \texttt{programa} no lugar do processo filho, e \texttt{wait}, para que o processo pai espere o processo filho terminar.
-
-
-\item \texttt{rode <programa>}: executa \texttt{programa}, sem imprimir o valor de retorno e também monopoliza o teclado e o mouse, utilizando as chamadas \texttt{fork}, que cria um processo filho, e \texttt{execve}, para executar \texttt{programa} no lugar do processo filho.
+\item \texttt{rodeveja <programa>}: executa \texttt{programa} e imprime o valor de retorno do mesmo ao final, utilizando as chamadas \texttt{fork}, que cria um processo filho, \texttt{execve}, para executar \texttt{programa} no lugar do processo filho, e \texttt{wait}, para que o processo pai espere o processo filho terminar. Dessa forma, como o processo filho está executando em primeiro plano (foreground) a shell não consegue executar outro comando enquanto o processo filho não terminar (ctrl+c encerra o processo filho).
+\item \texttt{rode <programa>}: executa \texttt{programa}, sem imprimir o valor de retorno e também monopoliza o teclado e o mouse, ou seja, o processo filho estará executando em segundo plano (background) e permitindo que a shell execute outros comandos. Isso é feito utilizando as chamadas \texttt{fork}, que cria um processo filho, e \texttt{execve}, para executar \texttt{programa} no lugar do processo filho criado (ctrl+c não encerra o processo filho).
 \item \texttt{quit}: encerra a shell.
 \end{itemize}
 
