@@ -1,0 +1,28 @@
+/usr/
+	include/minix/
+		callnr.h 			<-- macro para o número da chamada de sistema
+	
+	src/
+	
+		servers/
+
+			pm/
+				table.c         <-- tabela com a chamada de sistema
+				chpriority.c    <-- função da chamada de sistema
+				proto.h         <-- protótipo da chamada
+				Makefile	<-- (make)
+
+			is/
+				dmp_kernel.c	<-- função para F4
+				dmp.c		<-- 
+				proto.h		<-- protótipo para F4
+
+		lib/posix/
+			_chpriority.c		<-- função para usuário
+			Makefile.in		<-- (make Makefile)
+
+		include/
+			unistd.h		<-- protótipo da função de usuário
+
+			minix/
+				callnr.h	<-- macro para o número da chamada de sistema
