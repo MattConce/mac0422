@@ -17,12 +17,24 @@
 				dmp.c		<-- 
 				proto.h		<-- protótipo para F4
 
-		lib/posix/
-			_chpriority.c		<-- função para usuário
-			Makefile.in		<-- (make Makefile)
+		lib/
+			posix/
+				_chpriority.c	<-- função para usuário
+				Makefile.in	<-- (make Makefile)
+
+			syslib/
+				sys_chpriority.c<-- função para usuário da chamada do kernel
 
 		include/
 			unistd.h		<-- protótipo da função de usuário
 
 			minix/
 				callnr.h	<-- macro para o número da chamada de sistema
+				com.h		<-- macro para a chamada do kernel
+
+		kernel/
+			system.h		<-- protótipo da chamada do kernel
+			system.c		<-- mapeia a chamada do kernel
+			
+			system/
+				do_chpriority.c <-- função da chamada do kernel
