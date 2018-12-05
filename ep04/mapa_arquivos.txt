@@ -1,0 +1,16 @@
+/usr/src/
+	include/
+		fcntl.h		<- protótipo de open_tmp()
+		minix/
+			callnr.h<- define macro OPENTMP para a chamada 66
+			const.h <- define i-node I_TEMPORARY
+		sys/
+			stat.h 	<- define macros S_IFTMP e S_ISTMP(m) para verificação de tipo I_TEMPORARY
+	lib/posix/
+		_open_tmp.c	<- implementa open_tmp()
+		Makefile.in	<- adiciona _open_tmp.c a lista arquivos							
+	fs/
+		proto.h		<- protótipo da chamada do_open_tmp()
+		table.c		<- define do_open_tmp() como a chamada 66
+		open.c		<- implementação de do_open_tmp()
+		read.c		<- alterado para aceitar arquivos I_TEMPORARY
