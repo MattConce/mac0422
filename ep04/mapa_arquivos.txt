@@ -13,5 +13,6 @@
 		proto.h		<- protótipo da chamada do_open_tmp()
 		table.c		<- define do_open_tmp() como a chamada 66
 		open.c		<- implementação de do_open_tmp()
+				   alteracao em do_slink() para impedir a criacao de links simbólicos para temporarios
 		read.c		<- alterado para aceitar arquivos I_TEMPORARY
-		misc.c		<- tentando alterar free_proc() pra deletar arquivos temporarios
+		misc.c		<- alteracao em free_proc() pra deletar arquivos temporarios usando copia de unlink_file()

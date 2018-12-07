@@ -1,0 +1,88 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{xspace}
+\usepackage{amsmath}
+\usepackage{nccmath}
+\usepackage{mathtools}
+\usepackage{bbm}
+\usepackage{multirow}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[margin=1.0in]{geometry}
+\usepackage[decimalsymbol=comma]{siunitx}
+\setlength{\parindent}{0pt}
+\usepackage{tikz}
+\usepackage{listings}
+\usetikzlibrary{arrows,shapes,automata,petri,positioning,calc}
+
+\title{MAC0422 - Sistemas Operacionais}
+\author{Matheus Santos - 10297672 \\ Vitor Barbosa Sério - 7627627}
+\date{\today}
+
+\newcommand\eqdef{\stackrel{\mathclap{\normalfont\mbox{def}}}{=}}
+\newcommand\eqdub{\stackrel{\mathclap{\normalfont\mbox{?}}}{=}}
+\newcommand\leqdub{\stackrel{\mathclap{\normalfont\mbox{?}}}{\leq}}
+\newcommand\geqdub{\stackrel{\mathclap{\normalfont\mbox{?}}}{\geq}}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newcommand\Oh[1]{\text{O}(#1)}
+\newcommand\Thetah[1]{\Theta(#1)}
+
+\newcommand{\benum}{\begin{enumerate}}
+\newcommand{\eenum}{\end{enumerate}}
+
+\begin{document}
+
+
+\makeatletter
+\begin{flushright}
+\@date
+\end{flushright}
+\begin{center}
+{\Large \@title \\}
+{\large \@author}
+\end{center}
+\makeatother
+
+Esse trabalho implementa a chamada de sistema \texttt{open{\_}tmp(path, modo)}, que abre e cria arquivos temporários, sendo \texttt{path} o caminho absoluto ou relativo para a criação do arquivo e \texttt{modo} o modo de alteração do mesmo. Os modos de alteração seguem o mesmo padrão da função \texttt{fopen} (`r', `w', `a', `r+', `w+ e `a+').
+
+Abaixo segue a lista dos arquivos alterados ou criados e qual papel eles desempenham na implementação:
+
+\begin{itemize}
+
+\item \begin{itemize}
+
+\item Diretório: \texttt{/usr/src/servers/fs/}
+
+\item Arquivos: \texttt{proto.h, table.c, open.c, read.c, misc.c}
+
+\item Função: Implementa a função e o protótipo da mesma para a chamada de sistema no nível do \textit{File System} (FS) através da função \texttt{do{\_}open{\_}tmp}. Além disso, foram alteradas as seguintes funções: \texttt{do{\_}slink}, para impedir a craição de links simbólicos que apontem para arquivos temporários; \texttt{read{\_}write}, para permitir a leitura e escrita em arquivos temporários; e \texttt{free{\_}proc}, para remover os arquivos temporários quando os processos que apontavam para os mesmos se encerram.
+
+\end{itemize}
+
+\item \begin{itemize}
+
+\item Diretório: \texttt{/usr/src/lib/posix/}
+
+\item Arquivos: \texttt{{\_}open{\_}tmp.c, Makefile.in}
+
+\item Função: Implementa a função para usuário, \texttt{open{\_}tmp}, que recebe \texttt{path} e \texttt{modo} e faz a chamada para o FS.
+
+\end{itemize}
+
+\item \begin{itemize}
+
+\item Diretório: \texttt{/usr/src/include/}
+
+\item Arquivos: \texttt{fcntl.h, minix/callnr.h, minix/const.h, sys/stat.h}
+
+\item Função: Define o protótipo da função \texttt{open{\_}tmp}, além dos macros \texttt{OPENTMP} e \texttt{I{\_}TEMPORARY} para o número da chamada de sistema referente a \texttt{do{\_}open{\_}tmp} e para o novo tipo de arquivo, respectivamente. Também foram definidos os macros \texttt{S{\_}IFTMP} e \texttt{S{\_}ISTMP(m)} para verificar se um arquivo é temporário através do struct \texttt{stat}.
+
+\end{itemize}
+
+\end{itemize}
+
+\end{document}
