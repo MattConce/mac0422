@@ -14,3 +14,4 @@
 		table.c		<- define do_open_tmp() como a chamada 66
 		open.c		<- implementação de do_open_tmp()
 		read.c		<- alterado para aceitar arquivos I_TEMPORARY
+		misc.c		<- tentando alterar free_proc() pra deletar arquivos temporarios
